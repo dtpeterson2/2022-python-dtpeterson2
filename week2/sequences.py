@@ -23,18 +23,20 @@ print(f"{varString[::-1]}");
 
 #3 List slicing
 #3a ['slice', 'to', 'list', 'nice', 'a', 'is', 'Here']
-print(varList[::-1])    #Whyt does it say None?
+print(varList[::-1])    #.reverse is odd. It returns null if you try to print it directly
+
 #3b ['a', 'is', 'Here']
 print(varList[2::-1])
+
 #3c ['a', 'nice']
+print(varList[2:4:1])   #remember the endpoint is always a closed boundary (even if you're going backwards)
 
 #3d ['Here', 'nice', 'slice']
+print(varList[::3])
 
 #3e ['is', 'a', 'nice', 'list', 'to', 'slice']
-
+print(varList[1::1])
 #4 Use a for loop to print all elements of varString one at line at a time
-"""
-for i in range(1,len(varString)):
-    print()
-"""
+for i in range(0,len(varString)): print(varString[i:i+1:])
 #5 Use a for loop to print out all elements of varList one line at a time
+for i in range(0,len(varList)): print(varList[i])   #Same thing.

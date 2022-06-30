@@ -1,5 +1,6 @@
-#auth: Duncan Peterson
-#Desc: This script will demand to know if you're a teapot
+##auth: Duncan Peterson
+##Desc: This script will demand to know if you're a teapot
+#It also tests some things as practice for myself.
 import keyword
 import sys  #Lets us pass arguments when we run a script as a list: sys.argv
 # sys.argv[0] is always the name of the script. 
@@ -9,38 +10,26 @@ print(sys.argv[0])
 authname="Duncan Peterson"
 print(f"{authname}");
 
-x="herp";
-y="derp";
-print(x+" "+y); #We can add strings$
-"""
-tea=int(0);
-try:
-    tea=(input("Are you a teapot? [True/False] . . .> "))
-except ValueError:
-    print("Boolean required")
-print(tea);
-print(type(tea));
-tea = not tea;  #boolean invert
-eval_teapot=f"Tea was not {tea}" #We can fill sets outside of prints.
-print(eval_teapot)
-"""
-
+x="herp"
+y="derp"
+print(x+" "+y) #We can add strings this way
+print(y,x)  #or we can add strings that way
 count=[];
 for i in range(1,4):
     count.append(i);
 count.append('uh');
 print(count);   #My baby don't mess around because she loves me soooo ♪
 life=0;
-while life < len(count):    #Hey so that's how you use __len__!
+while life < len(count):    #Hey so that's how you use __len__! Also, whiles work while true, and then they break
     life+=1
 print("Health:"+"♥"*life);
 elements=['earth','water','fire','wind','perfect being'];   #Aww shucks, the 5th element is actually the 4th index
-print("The fifth element is the {}".format(elements[4]));   #Can't call lists, but you can call elements from it
+print("The fifth element is the {}".format(elements[4]));   #Can't call lists like f"{elements}"", but you can call elements from it with []
 #print("The fifth element is the "+elements[4]); #You can do it this way too. Think simpler.
-while True:
+while True: #This while loop is always true. The only way out of it is 'break'
     try:
-        tea= int(input ("Are you a Teapot? [True/False] . . . > "))
-        break
+        tea= int(input ("Are you a Teapot? [True/False] . . . > ")) #try: will run each line and will execpt if there's a problem
+        break   #break when the tea=int(input()) succeeds. The while loop will keep asking until we succeed.
     except ValueError:
         print("Please answer with an integer.")
 """
