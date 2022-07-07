@@ -13,7 +13,6 @@ with open("/etc/passwd","r") as pw1:
     print(f"File char length: {len(contents1)}")
     print("passwd now read as contents1. We can control contents1 however we please,\
         \n and write to a file later")
-    print(contents1)
     #This saved contents1 as the whole thing. We can close and do anything we want.
     #del contents1
     #pw1.close()    #Not needed because the file closes at the DEDENT
@@ -55,14 +54,9 @@ print("\n") #break
 with open("/etc/passwd","r") as pw3:
     contents3="" #init
     pw3.seek(0,0)
-#I tried to count tell() deltas beacuse i'm insane, but apparently the pointer is abstracted 
-#within a 'for line in file:' loop. OSError; telling position disabled by next() call. An interesting fact.
-
     for line in pw3:
-        contents3 = contents3 + pw3.readline()
+        contents3 = contents3 + line    # You actually can't tell() during a for loop in a file
     print(f"File length: {len(contents3)}") #The sane way to do things.
-    print(contents3)
-
     print("""I imagine we can use a for loop to check the whole file, and an if: statement
     to check for a peculiarly formatted block. 
     In the context of yanking the kcode block of my MCNP6.2 nuclear reactor simulation,
@@ -70,14 +64,17 @@ with open("/etc/passwd","r") as pw3:
     
     \"1neutron  activity in each cell {73 white spaces} print table 126\"
     
-    and then I will kcode_block=kcode_block + core0f_o.readline() 
-    while: I haven't reachedthe kcode terminator which consists of:
+    and then I will kcode_block=kcode_block + line.
+
+    while True: if I reach the kcode terminator which consists of:
     a whitespace, 131 dashes, a carriage return, and a line feed,
-    and then break.
+    break.
     
     Capturing things in MCNP isn't too easy because it's all formatted for teletype machines.
     Many of the terminators are just for the eyes and are not unique.
     We can still count and check for back-to-back LFs, which is something MCNP does a lot
-    
     :)""")
 
+#DON'T DO THIS the for loop is already stepping through lines!:
+#    for line in pw3:
+#         contents3 = contents3 + pw3.readline()
