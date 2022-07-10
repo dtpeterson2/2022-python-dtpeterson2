@@ -53,7 +53,7 @@ Do you go through door #1 #2, or #3?""")
     # == Door Number 2 Logic =====================
     elif door == "2":
         print("You stare into the endless abyss of an infinite loop fault.\n\
-            The void reaches out and asks what you want.")
+The void reaches out and asks what you want.")
         
         print("1. Knowledge")
         print("2. Cheesecake")
