@@ -98,4 +98,4 @@ print("\n") #break
 print("19. 3==3 and not ('testing' == 'testing' or 'Python' == 'Fun')")
 result=bool(3==3 and not ('testing' == 'testing' or 'Python' == 'Fun'))
 print(f"Result: {result}")
-print("\n") #break
+print("\n") #break'chunky' == 'bacon' and not (3==4 or 3==3)
