@@ -38,7 +38,7 @@ Do you go through door #1 #2, or #3?""")
         print("1. Nothing")
         print("2. Leave")
 
-        # == Bear logic ============================
+        # == Koala logic ============================
         koala = input("-> ")
 
         if koala == "1":
