@@ -15,21 +15,21 @@ print("2. List all the FQDNs in this dict")
 print("All stored FQDNs follow.")
 for FQDN in FQDNdict:
     print(f"{FQDN}")    #We can do .keys(), but this looks better in the console.
-print("\n")   #break
+print() #break
 
 print("#3. List all the IPs in the dict.")
 print("All stored IPs follow.")
 #for FQDN, IP in FQDNdict:   #You can't do this. You have to give only ONE thing to incriment. Too many values to unpack
 for FQDN, IP in list(FQDNdict.items()): #You're gonna get pairs back in the form of a list.
     print(f"{IP}")  #Pick the second ordinal and print that one.
-print("\n")   #break
+print() #break
 
 print("#4. List all records as key/value pairs")
 print("All records follow.")
 for FQDN, IP in list(FQDNdict.items()):  #list() is gonna treat each entry as an element. .items() is going to return all tuple pairs. FQDN and IP are going to index them.
     print(f"{FQDN} has {IP}")
 print("End record.")
-print("\n")   #break
+print() #break
 
 print("#5. Add server 7 and 8 to the list and continue the sequence.")
 #FQDNdict += {"server7.testlab.com" : "192.168.1.16"} + {"server8.testlab.com" : "192.168.1.17"} #That operand isn't supported for dicts.
@@ -47,8 +47,7 @@ for FQDN in tryme: #(key, value) is the tuples stored within. Items returns the 
     except KeyError:
         print(f"{FQDN} does not exist.")
         #The reason I used try and except is because .get() doesn't make a distinction between not finding the key and the value being None.
-print("\n")   #break
-
+print() #break
 
 print("#6, #7, test if server2 and server10 are contained")
 tryme=list({"server2.testlab.com","server10.testlab.com"})
