@@ -18,6 +18,9 @@ dorts = {1,2,3,5}
 print(f"dorts: {type(dorts)}")
 print(dorts)
 
+print("\n")
+print("-"*32)
+
 states = {
 'Oregon': 'OR',
 'Florida': 'FL',
@@ -45,7 +48,7 @@ print("\n")
 print("-"*32)
 
 #Try to enter the result as an argument to search another dict.
-for state, acronym in list(states.items()):
+for state, acronym in list(states.items()): #(key, value) is the tuples stored within. Items returns the whole tuple.
     print(f"{state} is {acronym}")
     #try:
     #    print(f"{acronym} indexes {cities[acronym]} in cities") #Remember, this will KeyError: if you ask for a bad index. This will handle it and move on.
@@ -57,3 +60,20 @@ for state, acronym in list(states.items()):
     else:   #If not None, then clearly something.
         print(f"{acronym} indexes {cities.get(acronym)} in cities")
 
+print("\n")
+print("-"*32)
+
+contacts = {"person1" : "JoeJack", "person2" : "Martha" , "person3" : "Sally", "person4" : "Gwen"}
+print(contacts.keys())  #This is going to print the first ordinal of all of the tuple pairs.
+
+contacts = {"person1" : {"firstname":"JoeJack","lastname":"Smith","age":27},\
+"person2" : {"firstname":"Martha","lastname":"Jones","age":32},\
+"person3" : {"firstname":"Sally","lastname":"Clark","age":22},\
+"person4" : {"firstname":"Gwen","lastname":"Case","age":13}}
+
+print(contacts['person1']['firstname'])    #To pull nested dicts, you have to give multiple keys
+#Print everything
+print("-"*32)
+for person in contacts:
+    for key in contacts[person]:
+        print(contacts[person][key])
