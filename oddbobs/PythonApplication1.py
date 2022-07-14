@@ -52,11 +52,11 @@ python3 -c 'print(''I am a teapot'')'
 works in command line, but remember it's double singles and not a quote like this (")
 This is probably a PowerShell thing. Bash is okayh with (")
 """
-z="toot"
+z="to0u"
 print(f"{z:z^10s}") #^ is the direction
-print(f"{z:z<10s}") #s is the data type. Valids are "s, d, f, c, x (hex 'base 16'), X (HEX), b (binary 'base 2'), o (octal 'base 8, 3 bit'), e"
+print(f"{z:z<10s}") #s is the data type. Valids are "s (str), d (decimal), f (float), c, x (hex 'base 16'), X (HEX), b (binary 'base 2'), o (octal 'base 8, 3 bit'), e (float exponential)"
 print(f"{z:z>10s}") #This formatting allows us to add padding of a desired char and data type
-print(f"{z:z<.2s}") #We can delete things too by using a dot.
+print(f"{z:<.3s}") #We can delete things too by using a dot.
 subnet=[255,255,255,0]
 print(f"{subnet[0]:0>8b}.{subnet[1]:0>8b}.{subnet[2]:0>8b}.{subnet[3]:0>8b}")
 #An interesting way to get 8bit binary for addresses
