@@ -38,5 +38,9 @@ with open('midterm/slicing-file.txt',"r") as file:  #load the file as something 
     print(combined)
     print(type(combined))
 #6. Print the quote. you can use .replace() to remove end of line characters.
-
+    combined=combined.replace("[","")    #Delete these.
+    combined=combined.replace("]","")    #Delete that.
+    combined=combined.replace("\n"," ")   #No more line feeds.
+    combined=combined.replace("'","")   #No single quotes.
+    print(combined)
 #7. Test your script. If you did everything right, you'll see: "Whether you think you can or you think you can't, you are right."
