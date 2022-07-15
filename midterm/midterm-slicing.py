@@ -9,7 +9,7 @@ import keyword
 print("Name: Duncan Peterson")
 #print(f"The target file is: {filename}\n")
 
-with open('midterm/slicing-file.txt',"r") as file:  #load the file as something we can play with.
+with open('slicing-file.txt',"r") as file:  #load the file as something we can play with.
     contents=list(file.readlines())
 
 #4 Create variables for each item and use a SINGLE slice to get the correct words
