@@ -4,15 +4,15 @@
 
 #try python3 midterm/midterm-if.py midterm/Midterm-if.txt in command line.
 import keyword
-from sys import argv
-script, filename = argv
+#from sys import argv
+#script, filename = argv
 print("Name: Duncan Peterson")
-print(f"The target file is: {filename}\n")
+#print(f"The target file is: {filename}\n")
 
 Total=int(0) #Initialize.
 findme=["gmeach18@ed.gov","248.253.63.149","Whiteland","80.222.19.190","Kayley","dcassyqw@microsoft.com"]
 
-with open(filename,"r") as contents:
+with open('midterm/Midterm-if.txt',"r") as contents:
     headercontent = list(contents.readline()) #Enter the header because it's perhaps useful?
     for i in range(0,len(findme)):    #i is the index of the findme list, for strings we have to match.
         contents.seek(0)    #Go back to the BOF.
