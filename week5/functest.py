@@ -28,7 +28,7 @@ def allvars(*arg):  #This takes as many args as you want and assigns them as a l
     return print("wow")
 
 allvars("The","Quick","Brown","Fox")
-
+print("")   #visual line break.
 import funcmain #You can import scripts to gain the functionality of the defined functions within.
 
 email_address = funcmain.create_tea("Teapotmail")
