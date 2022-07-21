@@ -16,7 +16,7 @@ import subprocess
 #procComplete= subprocess.run(['ls'],stdout=subprocess.PIPE) #ps -ef can view processes like a tskmngr
 #print(type(procComplete))
 #print(procComplete)
-#output=procComplete.stdout.decode().split('\n') #Decode translates the bytes to a string.
+#output=procComplete.stdout.decode().split('\n') #String Decode translates the bytes to a string.
 #.split creates new elements deliminted by the specified characters.
 #print(output)
 
