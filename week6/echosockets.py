@@ -37,12 +37,12 @@ L_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  #remote connection s
 L_SOCK.bind((LHOST, LPORT)) #tuple pair.
 
 while(1):   #infinite loop until we recieve.
-    L_SOCK.listen(1)    #Now listening and accepting connections with a backlog of 1
+    L_SOCK.listen(1)    #Now listening and accepting connections with a backlog of 1. This should wait until we get a connection.
     L_CONN, addr = L_SOCK.accept()  #accept() gives a tuple pair of (conn, address) of the incomming connection
-    print('Connected by', addr) #Will report the connection address
+    print('Connected by', addr) #Will report the connection address. This shouldn't obliterate the console because supposadly .listen will wait until we have something.
     while(1):   #infinite loop will continue until break
         RCV_DATA = L_CONN.recv(1024)    #get data in 1024 byte chunks max
-        if not RCV_DATA: break  #If RCV_DATA is empty, the statement will be true and exit. We'll wait for more connections.
+        if not RCV_DATA: break  #If RCV_DATA is empty, the statement will be true and exit.
         print(f"Server recieved:{RCV_DATA}")    #echo the raw byte data.
 
         L_CONN.sendall(RCV_DATA)    #This echos the data back to the client

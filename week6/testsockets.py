@@ -15,7 +15,7 @@ LPORT - The listening port
 SND_DATA - Store the data to send to RHOST and RPORT
 RCV_DATA - Store recieve on L.
 C_SOCK - Socket object to connect to remote
-L_Sock - Socket object for listening
+L_SOCK - Socket object for listening
 L_CONN - Connection object use to interact to a connected client.
 
 socket.AF_INET6 because IPv4 will be obsolete (eventually)
@@ -45,6 +45,7 @@ RCV_DATA = ""   #Init.
 
 C_SOCK = socket.socket(socket.AF_INET, socket.SOCK_STREAM)  #remote connection socket. use IPv4, TCP.
 #C_SOCK sets up all the connection information. It has a namespace of things that let us do data transfer.
+#This will crash if the connection is refused. Use try: except:
 
 C_SOCK.connect((RHOST, RPORT)) #Tuple pair
 #behind the scenes, connect() is doing the tcp handshake.
