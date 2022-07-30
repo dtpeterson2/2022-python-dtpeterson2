@@ -33,20 +33,21 @@ RPORT = 5000 #so it works with echosockets which is listening on 5000
 SND_DATA = b"This data came from clientsockets.py behold my power"
 RCV_DATA = ""   #init.
 
-try: 
-    C_SOCK=socket.socket(socket.AF_INET, socket.SOCK_STREAM)  #remote connection socket. use IPv4, TCP.
-    #C_SOCK sets up all the connection information. It has a namespace of things that let us do data transfer.
+C_SOCK=socket.socket(socket.AF_INET, socket.SOCK_STREAM)  #remote connection socket. use IPv4, TCP.
+#C_SOCK sets up all the connection information. It has a namespace of things that let us do data transfer.
 
+try: 
     C_SOCK.connect((RHOST, RPORT)) #Tuple pair. The connection will refuse if nobody is around to listen.
     #behind the scenes, connect() is doing the tcp handshake.
     print("Connection Successful.") #.connect will fail if it didn't
 
+    C_SOCK.send(SND_DATA)
+
+    RCV_DATA = C_SOCK.recv(1024)    #You actually need a while loop to recieve the other chunks.
+    print(RCV_DATA.decode())    #Print what the server gave us
+
+    C_SOCK.close()
+
 except socket.error as e:
     print(f"Connection failed: {e}")
 
-C_SOCK.send(SND_DATA)
-
-RCV_DATA = C_SOCK.recv(1024)    #You actually need a while loop to recieve the other chunks.
-print(RCV_DATA.decode())    #Print what the server gave us
-
-C_SOCK.close()
