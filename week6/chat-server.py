@@ -29,9 +29,10 @@ while True: #Lets loop back when we're done.
     #Now that we're connected, lets prepare to recieve data.
 
     while(1):   #Continue until there's no more data.
-        RCV_DATA = L_CONN.recv(1024)    #get data in 1024 byte chunks max
+        RCV_DATA = L_CONN.recv(1024)    #get data in 1024 byte chunks max. The Canterbury Corpus is way larger than this. We'll see what happens.
         if not RCV_DATA: break  #If RCV_DATA is empty, the statement will be true and exit.
         print(f"Server recieved: {RCV_DATA.decode()}")    #echo the raw byte data.
+        
 
         L_CONN.sendall(RCV_DATA)    #This echos the data back to the client. This sends until done and doesn't care about size.
         #It can't actually tell you if it was successful though.
