@@ -11,10 +11,14 @@ import requests, bs4 #You use this to demand things from a website using get()
 #This is why we're not going to write our own parser and instead use BeautifulSoup.
 
 response=requests.get("https://notpurple.com", None)  #This will get the raw HTML.
-response.raise_for_status() #This creates an HTTPError object if something went wrong. You probably don't have to do this but you certainly can.
 if response.ok:
     bsHTML= bs4.BeautifulSoup(response.text, features="html.parser")
-    print(type)
-    print('pepe')
+
+    #Get the title of the page and each of the links.
+    print(bsHTML.title.text)    #gets you the contents of the meta variable defined in <meta name="title" content="www.notpurple.com">
+
+    for aLink in bsHTML.find_all('a'): #<a is a tag for links. each <a contains stuff like <a class="gb1" href="https://www.google.com/imghp?hl=en&amp;tab=wi">Images</a>
+        print(f"Link: {aLink.getText()} , URL: {aLink.get('href')}") #This will get the href information which is a URL. The name is actualy outside of the attributes and you use getText to show it.
+
 else:
     print(f"Error: {response.status_code}")
