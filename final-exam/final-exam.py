@@ -13,7 +13,7 @@ parser = argparse.ArgumentParser(description='Parser handles the args. Imagine t
 
 parser.add_argument('-i', '--ipaddress', metavar='IP Address', dest='ipTry', type=str, required=True, help='<REQUIRED> IP address to try.')
 parser.add_argument('-q', '--question', metavar='Question Number', dest='question', type=int, required=True, choices=range(1,6), help='<REQUIRED> Valids are 1-5. Flow control argument for question selection.')
-parser.add_argument('-v', '--version', action='version', version='%(prog)s 1.0')    #Change version so you can help others know the ver of your script.
+parser.add_argument('-v', '--version', action='version', version='%(prog)s 1.2')    #Change version so you can help others know the ver of your script.
 
 argparsed=parser.parse_args()  #args have been parsed.
 
@@ -25,7 +25,7 @@ print(tryURL)
 #Question 1 function:
 def get_response(URL):
     response=requests.get(URL)
-    print(f"Server reply: {response.text}") #.text is just a string. it's not a function. Don't call it.
+    print(f"ANSWER: {response.text}") #.text is just a string. it's not a function. Don't call it.
     return None
 
 #Question 2. You're gonna need beautiful soup for this one. Import bs4
@@ -78,12 +78,13 @@ def socket_client(URL):
 
     RCV_DATA = ""   #init.
     goodport = None #init
-    for RPORT in range(5000,7001):
+    for RPORT in range(5000,7000):
         try:
             C_SOCK=socket.socket(socket.AF_INET, socket.SOCK_STREAM)  #remote connection socket. use IPv4, TCP.
-            C_SOCK.connect((RHOST, RPORT)) #Tuple pair. The connection will refuse if nobody is around to listen.
+            #HEY YOU CAN'T USE HTTP. YOU NEED TO USE THE IP ADDRESS VERBATIM! MAKE SURE YOU CONFIGURE THAT IN ARGUMENTS!
+            C_SOCK.connect(('172.31.29.253', RPORT)) #Tuple pair. The connection will refuse if nobody is around to listen.
 
-            print(f"Connection Successful on {RPORT}") #.connect will fail if it didn't
+            #print(f"Connection Successful on {RPORT}") #.connect will fail if it didn't
 
             C_SOCK.sendall(SND_DATA)    #This will make sure everything gets there no matter how long it takes.
             goodport=RPORT  #Save the port if we succeeded.
@@ -98,11 +99,11 @@ def socket_client(URL):
         except socket.error as e:
             #print(f"{RPORT} is bad.")
             C_SOCK.close()  #Silently error and try the next port.
-    
+
     if goodport==None:
         return  #We don't want to try to .decode on RCV_DATA if nothing was got, because RCV_DATA won't have the .decode attribute.
     else:
-        return  print(f"ANSWER: {RCV_DATA}\nPort: {goodport}")
+        return  print(f"ANSWER: {RCV_DATA.decode()}Port: {goodport}")
         
 
 #Lets parse the -q argument. We have to do this at the end AFTER the functions get defined.
@@ -119,7 +120,7 @@ elif argparsed.question==4:
     parse_json(tryURL)
 
 elif argparsed.question==5:
-    socket_client(tryURL)
+    socket_client(argparsed.ipTry)  #We're not going to HTTP this time. That doesn't work with sockets.
 
 else:
     print(f"Somehow, you managed to get around the argparser. How dare you")
